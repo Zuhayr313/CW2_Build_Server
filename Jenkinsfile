@@ -32,6 +32,10 @@ node {
             app.push("${env.BUILD_NUMBER}")
             app.push("latest")
         }
+        
+        sshagent(['my-ssh-key']) {
+            sh 'ssh ubuntu@50.17.1.15 kubectl set image deployments/cw2 cw2=zumar201/cw2_image1:$BUILD_NUMBER'
+        }
     }
 }
 
