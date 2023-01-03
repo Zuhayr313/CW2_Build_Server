@@ -11,7 +11,7 @@ node {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
 
-        app = docker.build("zuhayr313/cw2_build_server")
+        app = docker.build("zumar201/cw2_image1")
     }
 
     stage('Test image') {
