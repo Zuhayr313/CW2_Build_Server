@@ -34,7 +34,7 @@ node {
         }
     }
     
-    stage('Clone repository') {
+    stage('Deploy image') {
         /* Deploys passed builds to Kubernetes without disrupting service */
 
         sshagent(['my-ssh-key']) {
