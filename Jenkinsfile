@@ -32,11 +32,16 @@ node {
             app.push("${env.BUILD_NUMBER}")
             app.push("latest")
         }
-        
+    }
+    
+    stage('Clone repository') {
+        /* Deploys passed builds to Kubernetes without disrupting service */
+
         sshagent(['my-ssh-key']) {
             sh 'ssh ubuntu@34.227.11.210 kubectl set image deployments/cw2 cw2=zumar201/cw2_image1:$BUILD_NUMBER'
         }
     }
+   
 }
 
 
