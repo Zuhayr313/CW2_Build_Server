@@ -15,8 +15,7 @@ node {
     }
 
     stage('Test image') {
-        /* Ideally, we would run a test framework against our image.
-         * For this example, we're using a Volkswagen-type approach ;-) */
+        /* Testing if container is able to run from image */
 
         app.inside {
             sh 'echo "Tests passed"'
