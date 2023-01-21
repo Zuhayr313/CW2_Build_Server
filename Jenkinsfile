@@ -37,7 +37,7 @@ node {
         /* Deploys passed builds to Kubernetes without disrupting service */
 
         sshagent(['my-ssh-key']) {
-            sh 'ssh ubuntu@34.227.11.210 kubectl set image deployments/cw2 cw2=zumar201/cw2:$BUILD_NUMBER'
+            sh 'ssh ubuntu@3.93.163.156 kubectl set image deployments/cw2 cw2=zumar201/cw2:$BUILD_NUMBER'
         }
     }  
 }
