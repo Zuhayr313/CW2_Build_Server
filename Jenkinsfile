@@ -11,7 +11,7 @@ node {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
 
-        app = docker.build("zumar201/cw2_image1")
+        app = docker.build("zumar201/cw2")
     }
 
     stage('Test image') {
@@ -37,7 +37,7 @@ node {
         /* Deploys passed builds to Kubernetes without disrupting service */
 
         sshagent(['my-ssh-key']) {
-            sh 'ssh ubuntu@34.227.11.210 kubectl set image deployments/cw2 cw2=zumar201/cw2_image1:$BUILD_NUMBER'
+            sh 'ssh ubuntu@34.227.11.210 kubectl set image deployments/cw2 cw2=zumar201/cw2:$BUILD_NUMBER'
         }
     }  
 }
