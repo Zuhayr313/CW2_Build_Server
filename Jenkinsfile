@@ -18,10 +18,13 @@ node {
         /* Testing if container is able to run from image */
 
         sh 'echo "Running Container Using cw2 Image"'
-        sh 'docker container run --detach --publish 80:80 --name cw2test zumar201/cw2:1.0'
+        sh 'docker container run --detach --publish 80:80 --name cw2test1 zumar201/cw2:1.0'
         
         sh 'echo "Ensuring Container Launched Successfully"'
         sh 'docker container ls'
+        
+        sh 'docker container logs cw2test1'
+        sh 'docker container top cw2test1'
         
         sh 'echo "Tests passed"'
         
@@ -45,13 +48,4 @@ node {
             sh 'ssh ubuntu@3.93.163.156 kubectl set image deployments/cw2 cw2=zumar201/cw2:$BUILD_NUMBER'
         }
     } 
-    
-     stage('Test image') {
-        /* Stopping and removing container */
-       
-        sh 'echo "Stopping and Removing cw2test Container"'
-        sh 'docker container stop cw2test'
-        sh 'dokcer container rm cw2test'
-       
-    }
 }
