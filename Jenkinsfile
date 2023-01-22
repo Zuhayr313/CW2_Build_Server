@@ -18,7 +18,7 @@ node {
         /* Testing if container is able to run from image */
 
         sh 'echo "Running Container Using cw2 Image"'
-        sh 'docker container run --detach --publish 80:80 --name cw2 zumar201/cw2:1.0'
+        sh 'docker container run --detach --publish 80:80 --name cw2test zumar201/cw2:1.0'
         
         sh 'echo "Ensuring Container Launched Successfully"'
         sh 'docker container ls'
@@ -49,9 +49,9 @@ node {
      stage('Test image') {
         /* Stopping and removing container */
        
-        sh 'echo "Stopping and Removing cw2 Container"'
-        sh 'docker container stop cw2'
-        sh 'dokcer container rm cw2'
+        sh 'echo "Stopping and Removing cw2test Container"'
+        sh 'docker container stop cw2test'
+        sh 'dokcer container rm cw2test'
        
     }
 }
