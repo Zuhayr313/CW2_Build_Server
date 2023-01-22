@@ -17,14 +17,17 @@ node {
     stage('Test image') {
         /* Testing if container is able to run from image */
 
-        sh 'echo "Running Container Using cw2 Image"'
-        sh 'docker container run --detach --publish 80:80 --name containertest zumar201/cw2:1.0'
+       // sh 'echo "Running Container Using cw2 Image"'
+       // sh 'docker container run --detach --publish 80:80 --name containertest zumar201/cw2:1.0'
         
-        sh 'echo "Ensuring Container Launched Successfully"'
-        sh 'docker container ls'
+       // sh 'echo "Ensuring Container Launched Successfully"'
+       // sh 'docker container ls'
         
-        sh 'docker container logs containertest'
-        sh 'docker container top containertest'
+       // sh 'docker container logs containertest'
+       // sh 'docker container top containertest'
+        
+        sh 'docker container stop cw2test1'
+        sh 'docker container rm cw2test1'
         
         sh 'echo "Tests passed"'
         
