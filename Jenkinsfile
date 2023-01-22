@@ -2,7 +2,7 @@ node {
     def app
 
     stage('Clone repository') {
-        /* Let's make sure we have the repository cloned to our workspace */
+        /* Cloning the repository to the workspace */
 
         checkout scm
     }
@@ -17,9 +17,18 @@ node {
     stage('Test image') {
         /* Testing if container is able to run from image */
 
-        app.inside {
-            sh 'echo "Tests passed"'
-        }
+        sh 'echo "Running Container Using cw2 Image"'
+        sh 'docker container run --detach --publish 80:80 --name cw2 zumar201/cw2:1.0'
+        
+        sh 'echo "Ensuring Container Launched Successfully"'
+        sh 'docker container ls'
+        
+        sh 'echo "Stopping and Removing cw2 Container"'
+        sh 'docker container stop cw2'
+        sh 'dokcer container rm cw2'
+        
+        sh 'echo "Tests passed"'
+        
     }
 
     stage('Push image') {
