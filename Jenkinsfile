@@ -18,13 +18,13 @@ node {
         /* Testing if container is able to run from image */
 
         sh 'echo "Running Container Using cw2 Image"'
-        sh 'docker container run --detach --publish 80:80 --name cw2test1 zumar201/cw2:1.0'
+        sh 'docker container run --detach --publish 80:80 --name cw2ContainerTest zumar201/cw2:1.0'
         
         sh 'echo "Ensuring Container Launched Successfully"'
         sh 'docker container ls'
         
-        sh 'docker container logs cw2test1'
-        sh 'docker container top cw2test1'
+        sh 'docker container logs cw2ContainerTest'
+        sh 'docker container top cw2ContainerTest'
         
         sh 'echo "Tests passed"'
         
