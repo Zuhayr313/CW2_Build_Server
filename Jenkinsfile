@@ -23,10 +23,6 @@ node {
         sh 'echo "Ensuring Container Launched Successfully"'
         sh 'docker container ls'
         
-        sh 'echo "Stopping and Removing cw2 Container"'
-        sh 'docker container stop cw2'
-        sh 'dokcer container rm cw2'
-        
         sh 'echo "Tests passed"'
         
     }
@@ -48,5 +44,14 @@ node {
         sshagent(['my-ssh-key']) {
             sh 'ssh ubuntu@3.93.163.156 kubectl set image deployments/cw2 cw2=zumar201/cw2:$BUILD_NUMBER'
         }
-    }  
+    } 
+    
+     stage('Test image') {
+        /* Stopping and removing container */
+       
+        sh 'echo "Stopping and Removing cw2 Container"'
+        sh 'docker container stop cw2'
+        sh 'dokcer container rm cw2'
+       
+    }
 }
